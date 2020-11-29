@@ -27,7 +27,6 @@ export const setEpisodesTC = () => {
     return (dispatch: ThunkDispatch) => {
         episodeApi.getEpisodes()
             .then((res) => {
-                debugger
                 dispatch(setEpisodesAC(res.data.results))
             })
             .catch(error => {
@@ -36,17 +35,17 @@ export const setEpisodesTC = () => {
     }
 }
 
-/*export const setFilteredCharactersTC = (statusApi: string) => {
+export const setFilteredEpisodesTC = (e: string) => {
     return (dispatch: ThunkDispatch) => {
-        characterApi.getFilteredCharacters(statusApi)
+        episodeApi.getFilteredEpisodes(e)
             .then((res) => {
-                dispatch(setCharactersAC(res.data.results))
+                dispatch(setEpisodesAC(res.data.results))
             })
             .catch(error => {
                 console.log(error, dispatch);
             })
     }
-}*/
+}
 
 // types
 
