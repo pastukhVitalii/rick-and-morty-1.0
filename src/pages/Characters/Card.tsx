@@ -19,8 +19,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export type PropsType = {
-    character: CharacterType,
+    character: CharacterType
 }
+
 export type CardType = {}
 
 export const MyCard = React.memo(function (props: PropsType & CardType) {
@@ -33,13 +34,9 @@ export const MyCard = React.memo(function (props: PropsType & CardType) {
             setOpen(true);
         };
 
-        const handleClos = () => {
-            setOpen(false);
-        };
-
         return (
-            <div onClick={handleOpen}>
-                <Card className={classes.root}>
+            <>
+                <Card className={classes.root} onClick={handleOpen}>
                     <CardHeader
                         title={props.character.name}
                     />
@@ -59,8 +56,8 @@ export const MyCard = React.memo(function (props: PropsType & CardType) {
                         </Typography>
                     </CardContent>
                 </Card>
-                <MyModal open={open} setOpen={setOpen}/>
-            </div>
+                <MyModal open={open} setOpen={setOpen} character={props.character}/>
+            </>
         );
     }
 );

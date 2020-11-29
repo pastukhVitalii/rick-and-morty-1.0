@@ -74,6 +74,18 @@ export type CharacterType = {
     image: string
     species: string
     gender: string
+    type?: string
+    origin?: {
+        "name": string
+        "url": string
+    },
+    location?: {
+        name: string
+        url: string
+    },
+    episode?: Array<string>
+    url?: string
+    created?: string
 }
 /*export type ResponseType<D = {}> = {
     resultCode: number
