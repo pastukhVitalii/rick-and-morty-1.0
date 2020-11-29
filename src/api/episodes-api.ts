@@ -16,6 +16,7 @@ export const episodeApi = {
         return promise;
     },
 }
+
 // types
 export type ResponseType = {
     results: Array<EpisodeType>
@@ -24,6 +25,7 @@ export type ResponseType = {
 export type ResEpisodesType = {
     episodes: Array<EpisodeType>
 }
+
 export type EpisodeType = {
     id: string
     name: string

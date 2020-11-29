@@ -33,6 +33,16 @@ export const Header = React.memo(function (props: PropsType) {
                             <ListItemText primary="Episodes"/>
                         </ListItem>
                     </NavLink>
+                    <NavLink to="/locations">
+                        <ListItem button style={{color: 'black', textDecoration: 'none'}}>
+                            <ListItemText primary="Locations"/>
+                        </ListItem>
+                    </NavLink>
+                    <NavLink to="/myWatchList">
+                        <ListItem button style={{color: 'black', textDecoration: 'none'}}>
+                            <ListItemText primary="MyWatchList"/>
+                        </ListItem>
+                    </NavLink>
                 </BottomNavigation>
             </div>
         );
