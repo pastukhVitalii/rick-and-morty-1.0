@@ -5,6 +5,7 @@ import {Episode} from "./Episode";
 export type EpisodeListType = {
     id: number
     title: string
+    status: boolean
 }
 
 export const MyWatchList = React.memo(() => {
@@ -35,15 +36,27 @@ export const MyWatchList = React.memo(() => {
                 nextId = e.id + 1
             }
         })
-        saveLocalStorage([...episodes, {id: nextId, title: title}]);
-        handlerEpisodes([...episodes, {id: nextId, title: title}]);
+        saveLocalStorage([...episodes, {id: nextId, title: title, status: false}]);
+        handlerEpisodes([...episodes, {id: nextId, title: title, status: false}]);
     }
 
     const removeEpisode = (id: number) => {
 
-        let idt = episodes.findIndex(e => e.id === id);
-        let newList = [...episodes.slice(0, idt), ...episodes.slice(idt + 1)];
+        let idE = episodes.findIndex(e => e.id === id);
+        let newList = [...episodes.slice(0, idE), ...episodes.slice(idE + 1)];
 
+        saveLocalStorage(newList);
+        handlerEpisodes(newList);
+    }
+    const changeStatusEpisode = (id: number) => {
+
+        let newList = episodes.map(e => {
+            if (e.id !== id) {
+                return e
+            } else {
+                return {...e, status: !e.status}
+            }
+        })
         saveLocalStorage(newList);
         handlerEpisodes(newList);
     }
@@ -51,7 +64,7 @@ export const MyWatchList = React.memo(() => {
     return (
         <div style={{paddingTop: '20px'}}>
             <AddItemForm addItem={addTask} disabled={false}/>
-            {episodes.map(e => <Episode key={e.id} episode={e} removeEpisode={removeEpisode}/>)}
+            {episodes.map(e => <Episode key={e.id} episode={e} removeEpisode={removeEpisode} changeStatusEpisode={changeStatusEpisode}/>)}
         </div>
     );
 })
