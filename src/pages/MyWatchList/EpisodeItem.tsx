@@ -9,8 +9,9 @@ type PropsType = {
     changeStatusEpisode: (id: number) => void
 }
 
-export const Episode = React.memo((props: PropsType) => {
+export const EpisodeItem = React.memo((props: PropsType) => {
 
+    const opacity = props.episode.status?{ opacity: '0.5'}: { opacity: '1'};
     return (
         <>
             <div>
@@ -19,9 +20,9 @@ export const Episode = React.memo((props: PropsType) => {
                     color="primary"
                     onChange={() => props.changeStatusEpisode(props.episode.id)}
                 />
-                <span>{props.episode.title}</span>
+                <span style={opacity} >{props.episode.title}</span>
                 <span>
-                    <IconButton onClick={() => props.removeEpisode(props.episode.id)}>
+                    <IconButton onClick={() => props.removeEpisode(props.episode.id)} style={opacity}>
                     <Delete/>
                 </IconButton>
                 </span>
