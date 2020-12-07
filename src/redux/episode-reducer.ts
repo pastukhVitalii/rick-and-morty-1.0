@@ -46,6 +46,17 @@ export const setFilteredEpisodesTC = (e: string) => {
             })
     }
 }
+export const setPagesOfEpisodesTC = (pages: Array<number>) => {
+    return (dispatch: ThunkDispatch) => {
+        episodeApi.getPagesOfEpisodes(pages)
+            .then((res) => {
+                dispatch(setEpisodesAC(res.data))
+            })
+            .catch(error => {
+                console.log(error, dispatch);
+            })
+    }
+}
 
 // types
 

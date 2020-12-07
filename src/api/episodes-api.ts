@@ -15,6 +15,10 @@ export const episodeApi = {
         const promise = instance.get<ResponseType>(`episode/?name=${e}`);
         return promise;
     },
+    getPagesOfEpisodes(pages: Array<number> = [40, 41]) {
+        const promise = instance.get<Array<EpisodeType>>(`episode/${pages}`);
+        return promise;
+    },
 }
 
 // types
